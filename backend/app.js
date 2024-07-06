@@ -3,6 +3,7 @@ const path = require("path");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const multer = require("multer");
+app.use(cors());
 
 const { mongodbUrl } = require("./constants/constants");
 require("dotenv").config();
@@ -16,6 +17,12 @@ const OrderRouter = require("./routes/OrderRoute");
 
 const app = express();
 
+app.use(cors({
+    origin: 'https://asm03-nodejs-frontend-a59a5.web.app',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+    allowedHeaders: 'Content-Type,Authorization'
+}));
 // multer storage
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
