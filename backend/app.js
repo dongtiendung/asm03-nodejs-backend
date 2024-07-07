@@ -19,7 +19,7 @@ const app = express();
 
 app.use(cors());
 app.use(cors({
-    origin: 'https://asm03-nodejs-frontend-a59a5.web.app',
+    origin: 'https://asm03-nodejs-frontend-a59a5.web.app/api/',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
     allowedHeaders: 'Content-Type,Authorization'
