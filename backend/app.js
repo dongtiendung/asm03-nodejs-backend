@@ -4,8 +4,6 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const multer = require("multer");
 const cors = require('cors');
-
-const { mongodbUrl } = require("./constants/constants");
 require("dotenv").config();
 
 // import router
@@ -16,7 +14,7 @@ const CartRouter = require("./routes/CartRoute");
 const OrderRouter = require("./routes/OrderRoute");
 
 const app = express();
-
+const mongoUri = process.env.MONGO_URI;
 app.use(cors());
 app.use(cors({
     origin: 'https://asm03-nodejs-frontend-a59a5.web.app/api/',
@@ -91,7 +89,7 @@ app.use((error, req, res, next) => {
 const PORT = process.env.PORT || 5000;
 
 mongoose
-  .connect(mongodbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => {
     const server = app.listen(PORT, () => {
       console.log("App Started at PORT: " + PORT);
