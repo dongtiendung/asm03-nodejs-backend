@@ -7,8 +7,8 @@ const sendEmail = async (emailData) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "bvphap.tk@gmail.com", // Replace with your Gmail email address
-      pass: "pwmt pulz ovtp xvpy", // Replace with your Gmail password or app password
+      user: process.env.EMAIL_USER, // Replace with your Gmail email address
+      pass: process.env.EMAIL_PASS, // Replace with your Gmail password or app password
     },
   });
   const html = emailOrder(
